@@ -18,7 +18,7 @@ namespace Microsoft.CodeAnalysis.FindUsages
     /// Subclassing is also supported for scenarios that fall outside the bounds of
     /// these common cases.
     /// </summary>
-    internal abstract partial class DefinitionItem
+    public abstract partial class DefinitionItem
     {
         // Existing behavior is to do up to two lookups for 3rd party navigation for FAR.  One
         // for the symbol itself and one for a 'fallback' symbol.  For example, if we're FARing
@@ -120,7 +120,7 @@ namespace Microsoft.CodeAnalysis.FindUsages
         public abstract bool CanNavigateTo(Workspace workspace);
         public abstract bool TryNavigateTo(Workspace workspace, bool isPreview);
 
-        public static DefinitionItem Create(
+        internal static DefinitionItem Create(
             ImmutableArray<string> tags,
             ImmutableArray<TaggedText> displayParts,
             DocumentSpan sourceSpan,
@@ -133,7 +133,7 @@ namespace Microsoft.CodeAnalysis.FindUsages
         }
 
         // Kept around for binary compat with F#/TypeScript.
-        public static DefinitionItem Create(
+        internal static DefinitionItem Create(
             ImmutableArray<string> tags,
             ImmutableArray<TaggedText> displayParts,
             ImmutableArray<DocumentSpan> sourceSpans,
@@ -145,7 +145,7 @@ namespace Microsoft.CodeAnalysis.FindUsages
                 properties: null, displayIfNoReferences: displayIfNoReferences);
         }
 
-        public static DefinitionItem Create(
+        internal static DefinitionItem Create(
             ImmutableArray<string> tags,
             ImmutableArray<TaggedText> displayParts,
             ImmutableArray<DocumentSpan> sourceSpans,
@@ -193,7 +193,7 @@ namespace Microsoft.CodeAnalysis.FindUsages
         }
 
         // Kept around for binary compat with F#/TypeScript.
-        public static DefinitionItem CreateNonNavigableItem(
+        internal static DefinitionItem CreateNonNavigableItem(
             ImmutableArray<string> tags,
             ImmutableArray<TaggedText> displayParts,
             ImmutableArray<TaggedText> originationParts,
@@ -204,7 +204,7 @@ namespace Microsoft.CodeAnalysis.FindUsages
                 properties: null, displayIfNoReferences: displayIfNoReferences);
         }
 
-        public static DefinitionItem CreateNonNavigableItem(
+        internal static DefinitionItem CreateNonNavigableItem(
             ImmutableArray<string> tags,
             ImmutableArray<TaggedText> displayParts,
             ImmutableArray<TaggedText> originationParts = default,
