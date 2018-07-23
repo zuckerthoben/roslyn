@@ -60,6 +60,12 @@ function Copy-InsertionItems() {
         "Vsix\CodeAnalysisCompilers\Microsoft.CodeAnalysis.Compilers.vsmand",
         "Vsix\CodeAnalysisCompilers\Microsoft.CodeAnalysis.Compilers.json")
 
+    $vsLanguages = "chs", "cht", "csy", "fra", "deu", "ita", "jpn", "kor", "plk", "ptb", "rus", "esn", "trk"
+    foreach ($language in $vsLanguages) {
+        $items.Add("Vsix\CodeAnalysisCompilers\Microsoft.CodeAnalysis.Compilers.Resources.$($language).vsix"
+        $items.Add("Vsix\CodeAnalysisCompilers\Microsoft.CodeAnalysis.Compilers.Resources.$($language).vsmand"
+        $items.Add("Vsix\CodeAnalysisCompilers\Microsoft.CodeAnalysis.Compilers.Resources.$($language).json"
+    }
 
     foreach ($item in $items) { 
         $itemPath = Join-Path $configDir $item
