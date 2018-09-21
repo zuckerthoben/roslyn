@@ -142,18 +142,8 @@
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <ForceIncludeInVSIX>true</ForceIncludeInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\..\Workspaces\Remote\Razor\Microsoft.CodeAnalysis.Remote.Razor.ServiceHub.csproj">
-      <Name>RazorServiceHub</Name>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <ForceIncludeInVSIX>true</ForceIncludeInVSIX>
-    </ProjectReference>
     <ProjectReference Include="..\..\Workspaces\Remote\ServiceHub\Microsoft.CodeAnalysis.Remote.ServiceHub.csproj">
       <Name>ServiceHub</Name>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <ForceIncludeInVSIX>true</ForceIncludeInVSIX>
-    </ProjectReference>
-    <ProjectReference Include="..\Razor\Microsoft.VisualStudio.LanguageServices.Razor.RemoteClient.csproj">
-      <Name>RazorVisualStudio</Name>
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <ForceIncludeInVSIX>true</ForceIncludeInVSIX>
     </ProjectReference>
@@ -232,6 +222,6 @@
     <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" Version="$(MicrosoftVisualStudioSDKAnalyzersVersion)" PrivateAssets="all" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioShell150Version)" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Framework" Version="$(MicrosoftVisualStudioShellFrameworkVersion)" />
-    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="$(SQLitePCLRawbundle_greenVersion)"/>
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="$(SQLitePCLRawbundle_greenVersion)" />
   </ItemGroup>
 </Project>

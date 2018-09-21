@@ -39,7 +39,6 @@
     <ProjectReference Include="..\..\Workspaces\CSharp\Portable\Microsoft.CodeAnalysis.CSharp.Workspaces.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\Workspaces\VisualBasic\Portable\Microsoft.CodeAnalysis.VisualBasic.Workspaces.vbproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\Workspaces\Remote\Core\Microsoft.CodeAnalysis.Remote.Workspaces.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\Workspaces\Remote\Razor\Microsoft.CodeAnalysis.Remote.Razor.ServiceHub.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\Workspaces\Remote\ServiceHub\Microsoft.CodeAnalysis.Remote.ServiceHub.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\VisualStudio\Core\Def\Microsoft.VisualStudio.LanguageServices.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\VisualStudio\Core\Impl\Microsoft.VisualStudio.LanguageServices.Implementation.csproj" PrivateAssets="all"/>
@@ -48,7 +47,6 @@
     <ProjectReference Include="..\..\VisualStudio\CSharp\Impl\Microsoft.VisualStudio.LanguageServices.CSharp.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\VisualStudio\VisualBasic\Impl\Microsoft.VisualStudio.LanguageServices.VisualBasic.vbproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\VisualStudio\Xaml\Impl\Microsoft.VisualStudio.LanguageServices.Xaml.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\VisualStudio\Razor\Microsoft.VisualStudio.LanguageServices.Razor.RemoteClient.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\ExpressionEvaluator\Core\Source\ExpressionCompiler\Microsoft.CodeAnalysis.ExpressionCompiler.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\ExpressionEvaluator\CSharp\Source\ExpressionCompiler\Microsoft.CodeAnalysis.CSharp.ExpressionCompiler.csproj" PrivateAssets="all"/>
     <ProjectReference Include="..\..\ExpressionEvaluator\VisualBasic\Source\ExpressionCompiler\Microsoft.CodeAnalysis.VisualBasic.ExpressionCompiler.vbproj" PrivateAssets="all"/>
@@ -77,7 +75,6 @@
       <_File Include="$(_Dlls)Microsoft.CodeAnalysis.EditorFeatures.Wpf\Microsoft.CodeAnalysis.EditorFeatures.Wpf.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.CodeAnalysis.EditorFeatures\Microsoft.CodeAnalysis.EditorFeatures.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.CodeAnalysis.Features\Microsoft.CodeAnalysis.Features.dll" TargetDir="" />
-      <_File Include="$(_Dlls)Microsoft.CodeAnalysis.Remote.Razor.ServiceHub\Microsoft.CodeAnalysis.Remote.Razor.ServiceHub.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.CodeAnalysis.Remote.ServiceHub\Microsoft.CodeAnalysis.Remote.ServiceHub.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.CodeAnalysis.Remote.Workspaces\Microsoft.CodeAnalysis.Remote.Workspaces.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.CodeAnalysis.VisualBasic.EditorFeatures\Microsoft.CodeAnalysis.VisualBasic.EditorFeatures.dll" TargetDir="" />
@@ -89,7 +86,6 @@
       <_File Include="$(_Dlls)Microsoft.CodeAnalysis.Workspaces\Microsoft.CodeAnalysis.Workspaces.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.VisualStudio.LanguageServices.CSharp\Microsoft.VisualStudio.LanguageServices.CSharp.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.VisualStudio.LanguageServices.Implementation\Microsoft.VisualStudio.LanguageServices.Implementation.dll" TargetDir="" />
-      <_File Include="$(_Dlls)Microsoft.VisualStudio.LanguageServices.Razor.RemoteClient\Microsoft.VisualStudio.LanguageServices.Razor.RemoteClient.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.VisualStudio.LanguageServices.SolutionExplorer\Microsoft.VisualStudio.LanguageServices.SolutionExplorer.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.VisualStudio.LanguageServices.VisualBasic\Microsoft.VisualStudio.LanguageServices.VisualBasic.dll" TargetDir="" />
       <_File Include="$(_Dlls)Microsoft.VisualStudio.LanguageServices.Xaml\Microsoft.VisualStudio.LanguageServices.Xaml.dll" TargetDir="" />
