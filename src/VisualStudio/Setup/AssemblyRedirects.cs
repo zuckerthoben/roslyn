@@ -25,11 +25,9 @@ using Roslyn.VisualStudio.Setup;
 [assembly: ProvideRoslynBindingRedirection("Microsoft.VisualStudio.LanguageServices.CSharp.dll")]
 [assembly: ProvideRoslynBindingRedirection("Microsoft.VisualStudio.LanguageServices.SolutionExplorer.dll")]
 [assembly: ProvideRoslynBindingRedirection("Microsoft.VisualStudio.LanguageServices.Xaml.dll")]
-[assembly: ProvideRoslynBindingRedirection("Microsoft.VisualStudio.LanguageServices.Razor.RemoteClient.dll")]
 
 [assembly: ProvideRoslynBindingRedirection("Microsoft.CodeAnalysis.Elfie.dll")]
 
-[assembly: ProvideRoslynBindingRedirection("Microsoft.CodeAnalysis.Remote.Razor.ServiceHub.dll")]
 [assembly: ProvideRoslynBindingRedirection("Microsoft.CodeAnalysis.Remote.ServiceHub.dll")]
 [assembly: ProvideRoslynBindingRedirection("Microsoft.CodeAnalysis.Remote.Workspaces.dll")]
 
