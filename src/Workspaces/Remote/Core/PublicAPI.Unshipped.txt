@@ -19,7 +19,7 @@ Roslyn.Assets.ISolutionAsset.GetProjectsAsync(System.Threading.CancellationToken
 Roslyn.Assets.ISolutionProvider
 Roslyn.Assets.ISolutionProvider.CreateSolutionAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<Microsoft.CodeAnalysis.Solution>
 Roslyn.Assets.SolutionProvider
-static Microsoft.CodeAnalysis.Remote.Asset.SymbolGetter.GetSymbol(Microsoft.CodeAnalysis.Compilation compilation, Microsoft.CodeAnalysis.SyntaxTree syntaxTree, Microsoft.CodeAnalysis.Editor.NavigationBarItem item, System.Threading.CancellationToken cancellationToken) -> Microsoft.CodeAnalysis.Location
+static Microsoft.CodeAnalysis.Remote.Asset.SymbolGetter.GetSymbolLocation(Microsoft.CodeAnalysis.Compilation compilation, Microsoft.CodeAnalysis.SyntaxTree syntaxTree, Microsoft.CodeAnalysis.Editor.NavigationBarItem item, System.Threading.CancellationToken cancellationToken) -> Microsoft.CodeAnalysis.Location
 static Roslyn.Assets.SolutionProvider.FromAsset(Roslyn.Assets.ISolutionAsset asset, System.Collections.Generic.IEnumerable<System.Reflection.Assembly> hostAssemblies) -> Roslyn.Assets.ISolutionProvider
 static Roslyn.Assets.SolutionProvider.FromStream(System.IO.Stream stream, System.Collections.Generic.IEnumerable<System.Reflection.Assembly> hostAssemblies) -> Roslyn.Assets.ISolutionProvider
 static readonly Roslyn.Assets.SolutionProvider.ExternalHostAssemblies -> System.Collections.Immutable.ImmutableArray<System.Reflection.Assembly>

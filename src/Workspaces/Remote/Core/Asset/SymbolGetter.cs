@@ -7,7 +7,7 @@ namespace Microsoft.CodeAnalysis.Remote.Asset
 {
     public static class SymbolGetter
     {
-        public static Location GetSymbol(
+        public static Location GetSymbolLocation(
             Compilation compilation, SyntaxTree syntaxTree, NavigationBarItem item, CancellationToken cancellationToken)
         {
             var symbolItem = item as NavigationBarSymbolItem;
