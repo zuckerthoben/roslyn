@@ -11,7 +11,7 @@
   -->
   <PropertyGroup>
     <VersionPrefix>2.11.0</VersionPrefix>
-    <PreReleaseVersionLabel>rc1</PreReleaseVersionLabel>
+    <PreReleaseVersionLabel>rc2</PreReleaseVersionLabel>
     <SemanticVersioningV1>true</SemanticVersioningV1>
 
     <!-- 

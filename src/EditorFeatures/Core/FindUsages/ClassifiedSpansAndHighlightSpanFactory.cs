@@ -41,17 +41,19 @@ namespace Microsoft.CodeAnalysis.Editor.FindUsages
                 documentSpan.Document, documentSpan.SourceSpan, cancellationToken).ConfigureAwait(false);
         }
 
-        private static async Task<ClassifiedSpansAndHighlightSpan> ClassifyAsync(
+        private static Task<ClassifiedSpansAndHighlightSpan> ClassifyAsync(
             Document document, TextSpan sourceSpan, CancellationToken cancellationToken)
         {
-            var sourceText = await document.GetTextAsync(cancellationToken).ConfigureAwait(false);
+            //var sourceText = await document.GetTextAsync(cancellationToken).ConfigureAwait(false);
 
-            var narrowSpan = sourceSpan;
-            var lineSpan = GetLineSpanForReference(sourceText, narrowSpan);
+            //var narrowSpan = sourceSpan;
+            //var lineSpan = GetLineSpanForReference(sourceText, narrowSpan);
 
-            var taggedLineParts = await GetTaggedTextForDocumentRegionAsync(
-                document, narrowSpan, lineSpan, cancellationToken).ConfigureAwait(false);
-            return taggedLineParts;
+            //var taggedLineParts = await GetTaggedTextForDocumentRegionAsync(
+            //    document, narrowSpan, lineSpan, cancellationToken).ConfigureAwait(false);
+
+            // not needed for simple FAR
+            return Task.FromResult(new ClassifiedSpansAndHighlightSpan(ImmutableArray<ClassifiedSpan>.Empty, sourceSpan));
         }
 
         private static TextSpan GetLineSpanForReference(SourceText sourceText, TextSpan referenceSpan)
