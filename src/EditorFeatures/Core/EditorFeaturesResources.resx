@@ -830,4 +830,10 @@ Do you want to proceed?</value>
   <data name="Paste_Tracking" xml:space="preserve">
     <value>Paste Tracking</value>
   </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
 </root>
