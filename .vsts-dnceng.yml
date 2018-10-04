@@ -25,7 +25,7 @@ phases:
     - task: PublishTestResults@1
       inputs:
         testRunner: XUnit
-        testResultsFiles: '**/xUnitResults/*.xml'
+        testResultsFiles: '$(Build.SourcesDirectory)\Binaries\TestResults\$(_configuration)\*.xml'
         mergeTestResults: true
         testRunTitle: 'Windows Desktop $(_configuration) $(_testKind)'
       condition: succeededOrFailed()
@@ -56,7 +56,7 @@ phases:
     - task: PublishTestResults@1
       inputs:
         testRunner: XUnit
-        testResultsFiles: '**/xUnitResults/*.xml'
+        testResultsFiles: '$(Build.SourcesDirectory)\Binaries\TestResults\$(_configuration)\*.xml'
         mergeTestResults: true
         testRunTitle: 'Windows CoreClr $(_configuration)'
       condition: succeededOrFailed()
@@ -95,7 +95,7 @@ phases:
 
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)\Binaries\Release\Logs'
+        PathtoPublish: '$(Build.SourcesDirectory)\Binaries\$(_configuration)\Logs'
         ArtifactName: 'Build Correctness Files'
         publishLocation: Container
       continueOnError: true
@@ -103,7 +103,7 @@ phases:
 
 - phase: Linux_Test
   queue:
-    name: DotNetCore-Linux                     
+    name: DotNetCore-Linux
     timeoutInMinutes: 90
     parallel: 2
     matrix:
@@ -122,7 +122,7 @@ phases:
     - task: PublishTestResults@1
       inputs:
         testRunner: XUnit
-        testResultsFiles: '**/xUnitResults/*.xml'
+        testResultsFiles: '$(Build.SourcesDirectory)/Binaries/TestResults/$(_configuration)/*.xml'
         mergeTestResults: true
         testRunTitle: 'Linux $(_name)'
       condition: succeededOrFailed()

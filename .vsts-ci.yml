@@ -68,7 +68,7 @@ steps:
   displayName: Publish Test Results
   inputs:
     testRunner: XUnit
-    testResultsFiles: '**/xUnitResults/*.xml'
+    testResultsFiles: '$(Build.SourcesDirectory)\Binaries\TestResults\$(BuildConfiguration)\*.xml'
     mergeTestResults: true
     testRunTitle: 'Unit Tests'
   condition: succeededOrFailed()
