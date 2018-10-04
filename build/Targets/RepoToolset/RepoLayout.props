@@ -7,6 +7,8 @@
 
   <PropertyGroup>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+    <PlatformName Condition="'$(PlatformName)' == ''">$(Platform)</PlatformName>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -16,10 +18,26 @@
     <NuGetPackageRoot Condition="'$(NuGetPackageRoot)' == '' AND '$(OS)' != 'Windows_NT'">$(HOME)/.nuget/packages/</NuGetPackageRoot>
     <NuGetPackageRoot Condition="!HasTrailingSlash('$(NuGetPackageRoot)')">$(NuGetPackageRoot)\</NuGetPackageRoot>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <RepoRoot Condition="'$(RepoRoot)' == ''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), 'global.json'))\</RepoRoot>
-   
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Respect environment variable for the .NET install directory if set; otherwise, use the current default location -->
+    <DotNetRoot Condition="'$(DotNetRoot)' == ''">$(DOTNET_INSTALL_DIR)</DotNetRoot>
+
+    <!-- TODO: value differs from RepoToolset -->
+    <DotNetRoot Condition="'$(DotNetRoot)' == ''">$(RepoRoot)Binaries\Tools\dotnet\</DotNetRoot>
+    <DotNetRoot Condition="!HasTrailingSlash('$(DotNetRoot)')">$(DotNetRoot)\</DotNetRoot>
+
+    <DotNetTool>$(DotNetRoot)dotnet</DotNetTool>
+    <DotNetTool Condition="'$(OS)' == 'Windows_NT'">$(DotNetTool).exe</DotNetTool>
+
+    <MonoTool Condition="'$(MonoTool)' == ''">mono</MonoTool>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <!--
       TODO: values differ from RepoToolset 
     -->
@@ -34,6 +52,7 @@
     <ArtifactsConfigurationDir>$(ArtifactsDir)$(Configuration)\</ArtifactsConfigurationDir>
     <ArtifactsSymStoreDirectory>$(ArtifactsConfigurationDir)SymStore\</ArtifactsSymStoreDirectory>
     <ArtifactsTmpDir>$(ArtifactsConfigurationDir)tmp\</ArtifactsTmpDir>
+    <ArtifactsTestResultsDir>$(ArtifactsDir)TestResults\$(Configuration)\</ArtifactsTestResultsDir>
     <ArtifactsLogDir>$(ArtifactsConfigurationDir)Logs\</ArtifactsLogDir>
     <ArtifactsPackagesDir>$(ArtifactsConfigurationDir)NuGet\</ArtifactsPackagesDir>
     <ArtifactsShippingPackagesDir>$(ArtifactsPackagesDir)Shipping\</ArtifactsShippingPackagesDir>

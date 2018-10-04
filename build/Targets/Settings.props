@@ -20,6 +20,7 @@
   <Import Project="RepoToolset\ProjectDefaults.props" />
   <Import Project="RepoToolset\StrongName.props" />
   <Import Project="RepoToolset\VisualStudio.props"/>
+  <Import Project="RepoToolset\Tests.props" />
   <Import Project="Tools.props" />
 
   <PropertyGroup>
@@ -70,6 +71,13 @@
 
     <CustomBeforeMicrosoftCommonTargets>$(MSBuildThisFileDirectory)\BeforeCommonTargets.targets</CustomBeforeMicrosoftCommonTargets>
     <CustomAfterMicrosoftCommonTargets>$(MSBuildThisFileDirectory)\AfterCommonTargets.targets</CustomAfterMicrosoftCommonTargets>
+
+    <!-- 
+      Chose default target frameworks to use for testing on Mono and Core.
+      These may be overriden by projects that need to be skipped.
+    -->
+    <TestTargetFrameworks Condition="'$(TestRuntime)' == 'Mono'">net46</TestTargetFrameworks>
+    <TestTargetFrameworks Condition="'$(TestRuntime)' == 'Core'">netcoreapp2.1</TestTargetFrameworks>
   </PropertyGroup>
   
   <!-- Keys used by InternalsVisibleTo attributes. -->
