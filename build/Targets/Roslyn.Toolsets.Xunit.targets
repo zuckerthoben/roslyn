@@ -9,6 +9,12 @@
   <PropertyGroup>
     <RuntimeIdentifier Condition="'$(TargetFramework)' == 'net46' and '$(RuntimeIdentifier)' == '' and '$(OS)' == 'Windows_NT'">$(RoslynDesktopRuntimeIdentifier)</RuntimeIdentifier>
     <PrepareForBuildDependsOn>$(PrepareForBuildDependsOn);AddDefaultTestAppConfig</PrepareForBuildDependsOn>
+
+    <!--
+      https://github.com/dotnet/roslyn/issues/25049
+      Disable parallel runs everywhere until we get assembly specific settings working again
+    -->
+    <XUnitRunnerAdditionalArguments>-parallel none</XUnitRunnerAdditionalArguments>
   </PropertyGroup>
 
   <!-- Add a default test app.config, if the project doesn't already have one-->

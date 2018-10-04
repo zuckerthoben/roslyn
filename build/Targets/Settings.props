@@ -78,6 +78,12 @@
     -->
     <TestTargetFrameworks Condition="'$(TestRuntime)' == 'Mono'">net46</TestTargetFrameworks>
     <TestTargetFrameworks Condition="'$(TestRuntime)' == 'Core'">netcoreapp2.1</TestTargetFrameworks>
+
+    <!--
+      https://github.com/dotnet/roslyn/issues/25049
+      Disable parallel runs everywhere until we get assembly specific settings working again
+    -->
+    <XUnitRunnerAdditionalArguments>-parallel none</XUnitRunnerAdditionalArguments>
   </PropertyGroup>
   
   <!-- Keys used by InternalsVisibleTo attributes. -->
