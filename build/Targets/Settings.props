@@ -73,7 +73,7 @@
     <CustomAfterMicrosoftCommonTargets>$(MSBuildThisFileDirectory)\AfterCommonTargets.targets</CustomAfterMicrosoftCommonTargets>
 
     <!-- 
-      Chose default target frameworks to use for testing on Mono and Core.
+      Choose default target frameworks to use for testing on Mono and Core.
       These may be overriden by projects that need to be skipped.
     -->
     <TestTargetFrameworks Condition="'$(TestRuntime)' == 'Mono'">net46</TestTargetFrameworks>
