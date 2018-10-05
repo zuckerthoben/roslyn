@@ -95,7 +95,7 @@ phases:
 
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)\Binaries\$(_configuration)\Logs'
+        PathtoPublish: '$(Build.SourcesDirectory)\Binaries\Release\Logs'
         ArtifactName: 'Build Correctness Files'
         publishLocation: Container
       continueOnError: true
@@ -109,10 +109,12 @@ phases:
     matrix:
       coreclr:
         _args: --configuration Debug
-        _name: CoreClr 
+        _name: CoreClr
+        _configuration: Debug
       mono:
         _args: --configuration Debug --docker --mono
         _name: Mono
+        _configuration: Debug
   steps:
     - script: ./build/scripts/cibuild.sh $(_args)
       displayName: Build and Test
