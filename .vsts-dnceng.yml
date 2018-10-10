@@ -37,7 +37,7 @@ phases:
         ArtifactName: 'Windows Desktop $(_configuration) $(_testKind)' 
         publishLocation: Container
       continueOnError: true
-      condition: or(failed(), cancelled())
+      condition: not(succeeded())
 
 - phase: Windows_CoreClr_Unit_Tests
   queue:
@@ -69,7 +69,7 @@ phases:
         ArtifactName: 'Windows CoreClr $(_configuration)'
         publishLocation: Container
       continueOnError: true
-      condition: or(failed(), cancelled())
+      condition: not(succeeded())
            
 - phase: Windows_Determinism_Test
   queue:
@@ -86,7 +86,7 @@ phases:
         ArtifactName: 'Build Determinism Files'
         publishLocation: Container
       continueOnError: true
-      condition: or(failed(), cancelled())
+      condition: not(succeeded())
 
 - phase: Windows_Correctness_Test
   queue:
@@ -103,7 +103,7 @@ phases:
         ArtifactName: 'Build Correctness Files'
         publishLocation: Container
       continueOnError: true
-      condition: or(failed(), cancelled())
+      condition: not(succeeded())
 
 - phase: Linux_Test
   queue:
@@ -140,5 +140,5 @@ phases:
         ArtifactName: 'Linux $(_name)'
         publishLocation: Container
       continueOnError: true
-      condition: or(failed(), cancelled())
+      condition: not(succeeded())
     
