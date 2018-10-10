@@ -8,7 +8,7 @@
 
   <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
     <AutoGenerateBindingRedirects Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">true</AutoGenerateBindingRedirects>
-      
+
     <_GetTestsToRunTarget Condition="'$(TargetFrameworks)' == ''">_InnerGetTestsToRun</_GetTestsToRunTarget>
     <_GetTestsToRunTarget Condition="'$(TargetFrameworks)' != ''">_OuterGetTestsToRun</_GetTestsToRunTarget>
 

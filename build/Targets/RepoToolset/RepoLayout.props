@@ -35,6 +35,7 @@
     <DotNetTool Condition="'$(OS)' == 'Windows_NT'">$(DotNetTool).exe</DotNetTool>
 
     <MonoTool Condition="'$(MonoTool)' == ''">mono</MonoTool>
+    <MonoTool Condition="'$(OS)' == 'Windows_NT'">$(MonoTool).exe</MonoTool>
   </PropertyGroup>
 
   <PropertyGroup>

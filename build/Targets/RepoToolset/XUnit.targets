@@ -64,7 +64,7 @@
       <_ResultsFileToDisplay>%(TestToRun.ResultsHtmlPath)</_ResultsFileToDisplay>
       <_ResultsFileToDisplay Condition="!Exists('$(_ResultsFileToDisplay)')">%(TestToRun.ResultsStdOutPath)</_ResultsFileToDisplay>
     </PropertyGroup>
-    
+
     <Error Text="Tests failed: $(_ResultsFileToDisplay) [$(_TestEnvironment)]" Condition="'$(_TestErrorCode)' != '0'" File="XUnit" ContinueOnError="true" />
   </Target>
 
