@@ -28,15 +28,16 @@ phases:
         testResultsFiles: '$(Build.SourcesDirectory)\Binaries\TestResults\$(_configuration)\*.xml'
         mergeTestResults: true
         testRunTitle: 'Windows Desktop $(_configuration) $(_testKind)'
-      condition: succeededOrFailed()
+      condition: always()
 
     - task: PublishBuildArtifacts@1
+      displayName: Publish Logs
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)\Binaries\$(_configuration)\Logs'
         ArtifactName: 'Windows Desktop $(_configuration) $(_testKind)' 
         publishLocation: Container
       continueOnError: true
-      condition: failed()
+      condition: or(failed(), cancelled())
 
 - phase: Windows_CoreClr_Unit_Tests
   queue:
@@ -59,15 +60,16 @@ phases:
         testResultsFiles: '$(Build.SourcesDirectory)\Binaries\TestResults\$(_configuration)\*.xml'
         mergeTestResults: true
         testRunTitle: 'Windows CoreClr $(_configuration)'
-      condition: succeededOrFailed()
+      condition: always()
 
     - task: PublishBuildArtifacts@1
+      displayName: Publish Logs
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)\Binaries\$(_configuration)\Logs'
         ArtifactName: 'Windows CoreClr $(_configuration)'
         publishLocation: Container
       continueOnError: true
-      condition: failed()
+      condition: or(failed(), cancelled())
            
 - phase: Windows_Determinism_Test
   queue:
@@ -78,12 +80,13 @@ phases:
       displayName: Build - Validate determinism
 
     - task: PublishBuildArtifacts@1
+      displayName: Publish Logs
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)\Binaries\Debug\Logs'
         ArtifactName: 'Build Determinism Files'
         publishLocation: Container
       continueOnError: true
-      condition: failed()
+      condition: or(failed(), cancelled())
 
 - phase: Windows_Correctness_Test
   queue:
@@ -94,12 +97,13 @@ phases:
       displayName: Build - Validate correctness
 
     - task: PublishBuildArtifacts@1
+      displayName: Publish Logs
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)\Binaries\Release\Logs'
         ArtifactName: 'Build Correctness Files'
         publishLocation: Container
       continueOnError: true
-      condition: failed()
+      condition: or(failed(), cancelled())
 
 - phase: Linux_Test
   queue:
@@ -127,13 +131,14 @@ phases:
         testResultsFiles: '$(Build.SourcesDirectory)/Binaries/TestResults/$(_configuration)/*.xml'
         mergeTestResults: true
         testRunTitle: 'Linux $(_name)'
-      condition: succeededOrFailed()
+      condition: always()
 
     - task: PublishBuildArtifacts@1
+      displayName: Publish Logs
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)/Binaries/$(_configuration)/Logs'
         ArtifactName: 'Linux $(_name)'
         publishLocation: Container
       continueOnError: true
-      condition: failed()
+      condition: or(failed(), cancelled())
     
