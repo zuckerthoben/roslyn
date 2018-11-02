@@ -61,6 +61,15 @@ namespace Microsoft.CodeAnalysis.Editor.CSharp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete statement.
+        /// </summary>
+        internal static string Complete_statement {
+            get {
+                return ResourceManager.GetString("Complete_statement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to      (Press TAB to insert).
         /// </summary>
         internal static string Press_TAB_to_insert {
