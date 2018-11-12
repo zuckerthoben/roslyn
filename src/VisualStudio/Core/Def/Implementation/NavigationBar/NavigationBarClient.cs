@@ -32,8 +32,6 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
         private readonly VisualStudioWorkspaceImpl _workspace;
         private readonly ComEventSink _codeWindowEventsSink;
         private readonly IVsEditorAdaptersFactoryService _editorAdaptersFactoryService;
-        private readonly IntPtr _imageList;
-        private readonly IVsImageService2 _imageService;
         private readonly Dictionary<IVsTextView, ITextView> _trackedTextViews = new Dictionary<IVsTextView, ITextView>();
         private IVsDropdownBar _dropdownBar;
         private IList<NavigationBarProjectItem> _projectItems;
@@ -48,12 +46,8 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
             _manager = manager;
             _codeWindow = codeWindow;
             _workspace = workspace;
-            _imageService = (IVsImageService2)serviceProvider.GetService(typeof(SVsImageService));
             _projectItems = SpecializedCollections.EmptyList<NavigationBarProjectItem>();
             _currentTypeItems = SpecializedCollections.EmptyList<NavigationBarItem>();
-
-            var vsShell = serviceProvider.GetService(typeof(SVsShell)) as IVsShell;
-            vsShell?.TryGetPropertyValue(__VSSPROPID.VSSPROPID_ObjectMgrTypesImgList, out _imageList);
 
             _codeWindowEventsSink = ComEventSink.Advise<IVsCodeWindowEvents>(codeWindow, this);
             _editorAdaptersFactoryService = serviceProvider.GetMefService<IVsEditorAdaptersFactoryService>();
@@ -110,7 +104,9 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
         int IVsDropdownBarClient.GetComboAttributes(int iCombo, out uint pcEntries, out uint puEntryType, out IntPtr phImageList)
         {
             puEntryType = (uint)(DROPDOWNENTRYTYPE.ENTRY_TEXT | DROPDOWNENTRYTYPE.ENTRY_ATTR | DROPDOWNENTRYTYPE.ENTRY_IMAGE);
-            phImageList = _imageList;
+            
+            // This class implements IVsDropdownBarClient4 and provides icons as ImageMonikers
+            phImageList = IntPtr.Zero;
 
             switch (iCombo)
             {
@@ -196,11 +192,9 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
 
         int IVsDropdownBarClient.GetEntryImage(int iCombo, int iIndex, out int piImageIndex)
         {
-            var item = GetItem(iCombo, iIndex);
-
-            piImageIndex = item.Glyph.GetGlyphIndex();
-
-            return VSConstants.S_OK;
+            // This class implements IVsDropdownBarClient4 and expectes IVsDropdownBarClient4.GetEntryImage() to be called instead.
+            piImageIndex = -1;
+            return VSConstants.E_UNEXPECTED;
         }
 
         int IVsDropdownBarClient.GetEntryText(int iCombo, int iIndex, out string ppszText)
@@ -281,23 +275,10 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
 
         int IVsDropdownBarClient3.GetEntryImage(int iCombo, int iIndex, out int piImageIndex, out IntPtr phImageList)
         {
-            var item = GetItem(iCombo, iIndex);
-
-            // If this is a project item, try to get the actual proper image from the VSHierarchy it 
-            // represents.  That way the icon will always look right no matter which type of project
-            // it is.  For example, if phone/Windows projects have different icons, then this can 
-            // ensure we get the right icon, and not just a hard-coded C#/VB icon.
-            if (item is NavigationBarProjectItem projectItem)
-            {
-                if (_workspace.TryGetImageListAndIndex(_imageService, projectItem.DocumentId.ProjectId, out phImageList, out piImageIndex))
-                {
-                    return VSConstants.S_OK;
-                }
-            }
-
-            piImageIndex = GetItem(iCombo, iIndex).Glyph.GetGlyphIndex();
-            phImageList = _imageList;
-            return VSConstants.S_OK;
+            // This class implements IVsDropdownBarClient4 and expectes IVsDropdownBarClient4.GetEntryImage() to be called instead.
+            piImageIndex = -1;
+            phImageList = IntPtr.Zero;
+            return VSConstants.E_UNEXPECTED;
         }
 
         ImageMoniker IVsDropdownBarClient4.GetEntryImage(int iCombo, int iIndex)
