@@ -105,6 +105,9 @@
       <ReferencePath Condition="'%(FileName)' == 'Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime'">
         <EmbedInteropTypes>true</EmbedInteropTypes>
       </ReferencePath>
+      <ReferencePath Condition="'%(FileName)' == 'Microsoft.VisualStudio.TextManager.Interop.16.0.DesignTime'">
+        <EmbedInteropTypes>true</EmbedInteropTypes>
+      </ReferencePath>
     </ItemGroup>
   </Target>
 </Project>
