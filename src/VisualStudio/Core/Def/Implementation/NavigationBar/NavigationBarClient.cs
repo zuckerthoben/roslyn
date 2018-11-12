@@ -3,8 +3,10 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.CodeAnalysis.Editor;
+using Microsoft.CodeAnalysis.Editor.Wpf;
 using Microsoft.Internal.VisualStudio.Shell;
 using Microsoft.VisualStudio.Editor;
+using Microsoft.VisualStudio.Imaging.Interop;
 using Microsoft.VisualStudio.LanguageServices.Implementation.Extensions;
 using Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem;
 using Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem.Extensions;
@@ -19,6 +21,7 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
     internal class NavigationBarClient :
         IVsDropdownBarClient,
         IVsDropdownBarClient3,
+        IVsDropdownBarClient4,
         IVsDropdownBarClientEx,
         IVsCoTaskMemFreeMyStrings,
         INavigationBarPresenter,
@@ -295,6 +298,11 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
             piImageIndex = GetItem(iCombo, iIndex).Glyph.GetGlyphIndex();
             phImageList = _imageList;
             return VSConstants.S_OK;
+        }
+
+        ImageMoniker IVsDropdownBarClient4.GetEntryImage(int iCombo, int iIndex)
+        {
+            return GetItem(iCombo, iIndex).Glyph.GetImageMoniker();
         }
 
         int IVsDropdownBarClientEx.GetEntryIndent(int iCombo, int iIndex, out uint pIndent)
