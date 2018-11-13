@@ -275,6 +275,18 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.NavigationBar
 
         int IVsDropdownBarClient3.GetEntryImage(int iCombo, int iIndex, out int piImageIndex, out IntPtr phImageList)
         {
+            //// If this is a project item, try to get the actual proper image from the VSHierarchy it 
+            //// represents.  That way the icon will always look right no matter which type of project
+            //// it is.  For example, if phone/Windows projects have different icons, then this can 
+            //// ensure we get the right icon, and not just a hard-coded C#/VB icon.
+            //if (item is NavigationBarProjectItem projectItem)
+            //{
+            //    if (_workspace.TryGetImageListAndIndex(_imageService, projectItem.DocumentId.ProjectId, out phImageList, out piImageIndex))
+            //    {
+            //        return VSConstants.S_OK;
+            //    }
+            //}
+
             // This class implements IVsDropdownBarClient4 and expectes IVsDropdownBarClient4.GetEntryImage() to be called instead.
             piImageIndex = -1;
             phImageList = IntPtr.Zero;
