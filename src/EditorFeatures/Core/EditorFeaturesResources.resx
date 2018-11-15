@@ -836,4 +836,10 @@ Do you want to proceed?</value>
   <data name="Warning_image_element_automation_name" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="Invalid_assembly_name" xml:space="preserve">
+    <value>Invalid assembly name</value>
+  </data>
+  <data name="Invalid_characters_in_assembly_name" xml:space="preserve">
+    <value>Invalid characters in assembly name</value>
+  </data>
 </root>
