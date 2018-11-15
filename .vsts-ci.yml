@@ -36,7 +36,7 @@ steps:
 - task: NuGetRestore@1
   inputs:
     solution: 'build\ToolsetPackages\InternalToolset.csproj'
-    feed: '8f470c7e-ac49-4afe-a6ee-cf784e438b93'
+    vstsFeed: 'https://devdiv.pkgs.visualstudio.com/'
 
 - task: CmdLine@1
   displayName: Create output directory
