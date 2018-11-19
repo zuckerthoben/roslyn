@@ -2,7 +2,7 @@
 
 namespace Microsoft.CodeAnalysis.Structure
 {
-    internal static class BlockTypes
+    public static class BlockTypes
     {
         // Basic types.
         public const string Nonstructural = nameof(Nonstructural);

@@ -8,7 +8,7 @@ using Roslyn.Utilities;
 
 namespace Microsoft.CodeAnalysis.Structure
 {
-    internal abstract class BlockStructureService : ILanguageService
+    public abstract class BlockStructureService : ILanguageService
     {
         /// <summary>
         /// Gets the service corresponding to the specified document.

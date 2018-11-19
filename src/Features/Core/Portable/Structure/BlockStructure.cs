@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 
 namespace Microsoft.CodeAnalysis.Structure
 {
-    internal class BlockStructure
+    public class BlockStructure
     {
         public ImmutableArray<BlockSpan> Spans { get; }
 
