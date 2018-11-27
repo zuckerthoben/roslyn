@@ -58,7 +58,7 @@ namespace Microsoft.CodeAnalysis.UnitTests
         [PartNotDiscoverable]
         internal class TestDynamicFileInfoProvider : IDynamicFileInfoProvider
         {
-            public event EventHandler<DynamicFileInfo> Updated;
+            public event EventHandler<DynamicFileInfo> Reloaded;
 
             public Task<DynamicFileInfo> GetDynamicFileInfoAsync(ProjectId projectId, string projectFilePath, string filePath, CancellationToken cancellationToken)
             {
@@ -70,9 +70,9 @@ namespace Microsoft.CodeAnalysis.UnitTests
                 return Task.CompletedTask;
             }
 
-            private void OnUpdate()
+            private void OnReload()
             {
-                Updated?.Invoke(this, 
+                Reloaded?.Invoke(this, 
                     new DynamicFileInfo(
                         "test", 
                         SourceCodeKind.Regular, 

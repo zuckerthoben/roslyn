@@ -77,7 +77,7 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem
         private readonly FileChangeWatcher.IContext _fileReferenceChangeContext;
 
         /// <summary>
-        /// track whether we have been subscribed to <see cref="IDynamicFileInfoProvider.Updated"/> event
+        /// track whether we have been subscribed to <see cref="IDynamicFileInfoProvider.Reloaded"/> event
         /// </summary>
         private readonly HashSet<IDynamicFileInfoProvider> _eventSubscriptionTracker = new HashSet<IDynamicFileInfoProvider>();
 
@@ -569,7 +569,7 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem
                 projectId: Id, projectFilePath: _filePath, filePath: dynamicFilePath, CancellationToken.None).Wait(CancellationToken.None);
         }
 
-        private void OnDynamicFileInfoUpdated(object sender, DynamicFileInfo dynamicFileInfo)
+        private void OnDynamicFileInfoReloaded(object sender, DynamicFileInfo dynamicFileInfo)
         {
             _sourceFiles.ProcessFileChange(dynamicFileInfo.FilePath, dynamicFileInfo);
         }
@@ -872,7 +872,7 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem
                 // clear tracking to external components
                 foreach (var provider in _eventSubscriptionTracker)
                 {
-                    provider.Updated -= OnDynamicFileInfoUpdated;
+                    provider.Reloaded -= OnDynamicFileInfoReloaded;
                 }
 
                 _eventSubscriptionTracker.Clear();
@@ -1098,7 +1098,7 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem
                     if (_project._eventSubscriptionTracker.Add(fileInfoProvider))
                     {
                         // subscribe to the event when we use this provider the first time
-                        fileInfoProvider.Updated += _project.OnDynamicFileInfoUpdated;
+                        fileInfoProvider.Reloaded += _project.OnDynamicFileInfoReloaded;
                     }
 
                     if (_project._activeBatchScopes > 0)
