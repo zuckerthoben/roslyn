@@ -69,6 +69,7 @@ namespace Microsoft.CodeAnalysis.Editor.CSharp {
             }
         }
 
+        /// <summary>
         ///   Looks up a localized string similar to Complete statement.
         /// </summary>
         internal static string Complete_statement {
