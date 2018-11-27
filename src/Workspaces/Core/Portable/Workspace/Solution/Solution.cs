@@ -10,7 +10,6 @@ using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.CodeAnalysis.Shared.Extensions;
 using Microsoft.CodeAnalysis.Text;
-using Roslyn.Collections.Immutable;
 using Roslyn.Utilities;
 
 namespace Microsoft.CodeAnalysis
@@ -24,11 +23,10 @@ namespace Microsoft.CodeAnalysis
         private readonly SolutionState _state;
 
         // Values for all these are created on demand.
-        private ImmutableHashMap<ProjectId, Project> _projectIdToProjectMap;
+        private ImmutableDictionary<ProjectId, Project> _projectIdToProjectMap = ImmutableDictionary<ProjectId, Project>.Empty;
 
         private Solution(SolutionState state)
         {
-            _projectIdToProjectMap = ImmutableHashMap<ProjectId, Project>.Empty;
             _state = state;
         }
 
@@ -97,7 +95,7 @@ namespace Microsoft.CodeAnalysis
             // ContainsProject checks projectId being null
             if (this.ContainsProject(projectId))
             {
-                return ImmutableHashMapExtensions.GetOrAdd(ref _projectIdToProjectMap, projectId, s_createProjectFunction, this);
+                return ImmutableInterlocked.GetOrAdd(ref _projectIdToProjectMap, projectId, s_createProjectFunction, this);
             }
 
             return null;

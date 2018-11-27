@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -9,7 +10,6 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Host;
 using Microsoft.CodeAnalysis.Text;
-using Roslyn.Collections.Immutable;
 using Roslyn.Utilities;
 
 namespace Microsoft.CodeAnalysis
@@ -22,8 +22,8 @@ namespace Microsoft.CodeAnalysis
     {
         private readonly Solution _solution;
         private readonly ProjectState _projectState;
-        private ImmutableHashMap<DocumentId, Document> _idToDocumentMap = ImmutableHashMap<DocumentId, Document>.Empty;
-        private ImmutableHashMap<DocumentId, TextDocument> _idToAdditionalDocumentMap = ImmutableHashMap<DocumentId, TextDocument>.Empty;
+        private ImmutableDictionary<DocumentId, Document> _idToDocumentMap = ImmutableDictionary<DocumentId, Document>.Empty;
+        private ImmutableDictionary<DocumentId, TextDocument> _idToAdditionalDocumentMap = ImmutableDictionary<DocumentId, TextDocument>.Empty;
 
         internal Project(Solution solution, ProjectState projectState)
         {
@@ -207,7 +207,7 @@ namespace Microsoft.CodeAnalysis
                 return null;
             }
 
-            return ImmutableHashMapExtensions.GetOrAdd(ref _idToDocumentMap, documentId, s_createDocumentFunction, this);
+            return ImmutableInterlocked.GetOrAdd(ref _idToDocumentMap, documentId, s_createDocumentFunction, this);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Microsoft.CodeAnalysis
                 return null;
             }
 
-            return ImmutableHashMapExtensions.GetOrAdd(ref _idToAdditionalDocumentMap, documentId, s_createAdditionalDocumentFunction, this);
+            return ImmutableInterlocked.GetOrAdd(ref _idToAdditionalDocumentMap, documentId, s_createAdditionalDocumentFunction, this);
         }
 
         internal DocumentState GetDocumentState(DocumentId documentId)
