@@ -792,4 +792,19 @@
   <data name="Changing_document_0_is_not_supported" xml:space="preserve">
     <value>Changing document '{0}' is not supported.</value>
   </data>
+  <data name="ValueUsageInfo_NameOnly" xml:space="preserve">
+    <value>NameOnly</value>
+  </data>
+  <data name="ValueUsageInfo_Read" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="ValueUsageInfo_Reference" xml:space="preserve">
+    <value>Reference</value>
+  </data>
+  <data name="ValueUsageInfo_Write" xml:space="preserve">
+    <value>Write</value>
+  </data>
+  <data name="Parameter_preferences" xml:space="preserve">
+    <value>Parameter preferences</value>
+  </data>
 </root>

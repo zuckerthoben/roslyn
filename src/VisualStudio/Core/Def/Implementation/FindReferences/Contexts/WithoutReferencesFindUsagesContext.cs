@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 using System;
+using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.DocumentHighlighting;
@@ -21,8 +22,9 @@ namespace Microsoft.VisualStudio.LanguageServices.FindUsages
         {
             public WithoutReferencesFindUsagesContext(
                 StreamingFindUsagesPresenter presenter,
-                IFindAllReferencesWindow findReferencesWindow)
-                : base(presenter, findReferencesWindow)
+                IFindAllReferencesWindow findReferencesWindow,
+                ImmutableArray<AbstractFindUsagesCustomColumnDefinition> customColumns)
+                : base(presenter, findReferencesWindow, customColumns)
             {
             }
 
@@ -58,7 +60,7 @@ namespace Microsoft.VisualStudio.LanguageServices.FindUsages
                     foreach (var sourceSpan in definition.SourceSpans)
                     {
                         var entry = await TryCreateDocumentSpanEntryAsync(
-                            definitionBucket, sourceSpan, HighlightSpanKind.Definition).ConfigureAwait(false);
+                            definitionBucket, sourceSpan, HighlightSpanKind.Definition, customColumnsDataOpt: null).ConfigureAwait(false);
                         entries.AddIfNotNull(entry);
                     }
                 }

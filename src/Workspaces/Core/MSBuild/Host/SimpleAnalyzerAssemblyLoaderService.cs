@@ -10,7 +10,7 @@ namespace Microsoft.CodeAnalysis.Host
     {
 #if NET472
         private readonly DesktopAnalyzerAssemblyLoader _loader = new DesktopAnalyzerAssemblyLoader();
-#else
+#elif NETCOREAPP1_1 || NETCOREAPP2_1
         private readonly CoreClrAnalyzerAssemblyLoader _loader = new CoreClrAnalyzerAssemblyLoader();
 #endif
 

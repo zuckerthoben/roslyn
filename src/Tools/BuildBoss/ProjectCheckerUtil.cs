@@ -110,8 +110,9 @@ namespace BuildBoss
             }
             catch (Exception ex)
             {
-                data = default(RoslynProjectData);
+                textWriter.WriteLine("Unable to parse Roslyn project properties");
                 textWriter.WriteLine(ex.Message);
+                data = default;
                 return false;
             }
         }
@@ -442,6 +443,7 @@ namespace BuildBoss
                 // https://devdiv.visualstudio.com/DevDiv/_workitems/edit/712825 
                 if (ProjectFilePath.Contains("CodeStyle"))
                 {
+
                     switch (targetFramework)
                     {
                         case "net46":
@@ -456,7 +458,7 @@ namespace BuildBoss
                         case "net20":
                         case "net472":
                         case "netcoreapp1.1":
-                        case "netcoreapp2.0":
+                        case "netcoreapp2.1":
                         case "$(RoslynPortableTargetFrameworks)":
                             continue;
                     }

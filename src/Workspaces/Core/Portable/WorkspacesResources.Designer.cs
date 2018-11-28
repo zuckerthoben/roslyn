@@ -1233,6 +1233,15 @@ namespace Microsoft.CodeAnalysis {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parameter preferences.
+        /// </summary>
+        internal static string Parameter_preferences {
+            get {
+                return ResourceManager.GetString("Parameter_preferences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parentheses preferences.
         /// </summary>
         internal static string Parentheses_preferences {
@@ -1888,6 +1897,42 @@ namespace Microsoft.CodeAnalysis {
         internal static string Value_too_large_to_be_represented_as_a_30_bit_unsigned_integer {
             get {
                 return ResourceManager.GetString("Value_too_large_to_be_represented_as_a_30_bit_unsigned_integer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NameOnly.
+        /// </summary>
+        internal static string ValueUsageInfo_NameOnly {
+            get {
+                return ResourceManager.GetString("ValueUsageInfo_NameOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read.
+        /// </summary>
+        internal static string ValueUsageInfo_Read {
+            get {
+                return ResourceManager.GetString("ValueUsageInfo_Read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reference.
+        /// </summary>
+        internal static string ValueUsageInfo_Reference {
+            get {
+                return ResourceManager.GetString("ValueUsageInfo_Reference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write.
+        /// </summary>
+        internal static string ValueUsageInfo_Write {
+            get {
+                return ResourceManager.GetString("ValueUsageInfo_Write", resourceCulture);
             }
         }
         

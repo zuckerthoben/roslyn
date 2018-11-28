@@ -32,7 +32,7 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem
             _workspace = workspace;
             _projectFactory = projectFactory;
             ThreadingContext = threadingContext;
-            DocumentProvider = new DocumentProvider(this, null, null);
+            DocumentProvider = new DocumentProvider();
         }
 
         [Obsolete("This is a compatibility shim for Live Share; please do not use it.")]
@@ -148,7 +148,14 @@ namespace Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem
         {
             if (_projectFactory != null)
             {
-                project.VisualStudioProject = _projectFactory.CreateAndAddToWorkspace(project.ProjectSystemName, project.Language);
+                var creationInfo = new VisualStudioProjectCreationInfo
+                {
+                    AssemblyName = project.AssemblyName,
+                    FilePath = project.ProjectFilePath,
+                    Hierarchy = project.Hierarchy,
+                    ProjectGuid = project.Guid,
+                };
+                project.VisualStudioProject = _projectFactory.CreateAndAddToWorkspace(project.ProjectSystemName, project.Language, creationInfo);
                 project.UpdateVisualStudioProjectProperties();
             }
             else
